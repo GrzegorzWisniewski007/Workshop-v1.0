@@ -1,0 +1,40 @@
+﻿<Window x:Class="Workshop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Workshop"
+        mc:Ignorable="d"
+        Title="Warsztat 1.0" Height="350" Width="800">
+    <Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" RenderTransformOrigin="-0.936,-3.968"/>
+        <DataGrid x:Name="UsersDataGrid" HorizontalAlignment="Left" Height="249" Margin="10,60,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.498,0.496" AutoGenerateColumns="False">
+            <!--Styles-->
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Azure"/>
+                    <Setter Property="FontWeight" Value="Medium"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+            <!--Headres-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Imię" Width="*" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Nazwisko" Width="*" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}" />
+                <DataGridTemplateColumn MinWidth="100" Header="Akcje">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Click="button_Update">Edytuj</Button>
+                                <Button Click="button_Delete">Usuń</Button>
+                            </StackPanel>                            
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
